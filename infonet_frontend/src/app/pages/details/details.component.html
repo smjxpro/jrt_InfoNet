@@ -9,14 +9,13 @@
           <h4 matLine>Name: {{person.name}}</h4>
         </mat-list-item>
         <mat-list-item>
-          <mat-icon matListIcon>pin_drop</mat-icon>
-          <h4 matLine>City: {{person.city}}</h4>
-        </mat-list-item>
-        <mat-list-item>
           <mat-icon matListIcon>map</mat-icon>
           <h4 matLine>Country: {{person.country}}</h4>
         </mat-list-item>
-
+        <mat-list-item>
+          <mat-icon matListIcon>pin_drop</mat-icon>
+          <h4 matLine>City: {{person.city}}</h4>
+        </mat-list-item>
         <mat-list-item>
           <mat-icon matListIcon>star</mat-icon>
           <h4 matLine>Skills:
@@ -34,8 +33,7 @@
         </mat-list-item>
         <mat-list-item>
           <mat-icon matListIcon>text_snippet</mat-icon>
-          <h4 matLine>Resume: >
-            <mat-icon (click)="download(person.resumeLink)">download</mat-icon>
+          <h4 matLine>Resume: <mat-icon (click)="download(person.resumeLink)">download</mat-icon>
           </h4>
         </mat-list-item>
       </mat-list>
