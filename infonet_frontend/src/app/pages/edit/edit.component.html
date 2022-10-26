@@ -1,0 +1,79 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Edit People</h1>
+  <mat-grid-list cols="2" rowHeight="350px">
+
+    <form (submit)="$event.preventDefault()" [formGroup]="personEditForm">
+      <div>
+        <mat-form-field appearance="fill" class="f-width">
+          <mat-label>Name</mat-label>
+          <input matInput formControlName="name">
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="fill" class="f-width">
+          <mat-label>Country</mat-label>
+          <mat-select formControlName="country" required (valueChange)="onCountryChange($event)">
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let country of countries" [value]="country.name">
+              {{country.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="personEditForm.controls.country.hasError('required')">Please choose a country</mat-error>
+          <!--          <mat-hint>{{person.controls.country.value?.so}}</mat-hint>-->
+        </mat-form-field>
+      </div>
+
+      <div>
+        <mat-form-field appearance="fill" class="f-width">
+          <mat-label>City</mat-label>
+          <mat-select formControlName="city" required>
+            <mat-option>--</mat-option>
+            <mat-option *ngFor="let city of cities" [value]="city.name">
+              {{city.name}}
+            </mat-option>
+          </mat-select>
+          <mat-error *ngIf="personEditForm.controls.country.hasError('required')">Please choose a city</mat-error>
+          <!--          <mat-hint>{{person.controls.country.value?.so}}</mat-hint>-->
+        </mat-form-field>
+      </div>
+
+
+      <div>
+        <mat-label>Language Skills:</mat-label>
+        <mat-list class="inline-list">
+          <mat-list-item *ngFor="let skill of skills">
+            <mat-checkbox [value]="skill.name" [id]="skill.id" (change)="onSkill($event)" required [checked]="skillExists(skill.id)">
+              {{skill.name}}
+            </mat-checkbox>
+          </mat-list-item>
+        </mat-list>
+      </div>
+
+      <div>
+        <mat-form-field appearance="fill" class="f-width">
+          <mat-label>Date Of Birth</mat-label>
+          <input matInput [matDatepicker]="picker" formControlName="dateOfBirth" required>
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-datepicker #picker></mat-datepicker>
+          <mat-error *ngIf="personEditForm.controls.dateOfBirth.hasError('required')">Please choose a date</mat-error>
+
+        </mat-form-field>
+      </div>
+
+      <div class="text-center" class="f-width">
+        <label class="mat-button" for="file-upload">
+          Resume:
+        </label>
+        <input class="form-control" type="file" name="file" id="file-upload"
+               (change)="onFileChange($event)" required/>
+      </div>
+
+      <div>
+        <p>* Required fields</p>
+      </div>
+      <button mat-raised-button (click)="onSubmit()">Submit</button>
+    </form>
+  </mat-grid-list>
+</div>

@@ -1,0 +1,53 @@
+table {
+  background-color: rgb(255, 255, 255);
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.table_container {
+  overflow: scroll;
+}
+
+th {
+  color: rgb(112, 112, 112);
+  font-weight: lighter;
+  font-size: medium;
+}
+
+th, td {
+  text-align: center;
+  padding: 18px;
+
+}
+
+.th_row {
+  background-color: #ffffff;
+}
+
+table tr {
+  border-bottom: solid 1px rgb(236, 236, 236);
+}
+
+.table_container {
+  width: 100%;
+  text-align: center;
+}
+
+.dlt-btn:hover {
+  color: rgb(255, 103, 103);
+}
+
+
+.floating_btn_container{
+  text-align: center;
+  z-index: 100;
+}
+
+.floating_btn {
+  background-color: #90e0ef;
+  padding: 10px;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 30px;
+}
+

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace InfoNet.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221025130508_AddedPersonAndSkill")]
+    [Migration("20221026172912_AddedPersonAndSkill")]
     partial class AddedPersonAndSkill
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,6 +67,33 @@ namespace InfoNet.Infrastructure.Migrations
                     b.HasIndex("PersonId");
 
                     b.ToTable("Skills");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = new Guid("cef4f3c3-b936-438b-8d25-9b24b7f4491b"),
+                            Name = "C#"
+                        },
+                        new
+                        {
+                            Id = new Guid("4e2bb074-953f-4bc4-991e-2f2bfa2d77ff"),
+                            Name = "C++"
+                        },
+                        new
+                        {
+                            Id = new Guid("c4e0ed66-6b79-4c3a-99bb-4bba72624d78"),
+                            Name = "Java"
+                        },
+                        new
+                        {
+                            Id = new Guid("8599cc01-17c2-437b-a557-cfe142707ddd"),
+                            Name = "PHP"
+                        },
+                        new
+                        {
+                            Id = new Guid("d7fe9808-5b69-40c3-a819-d5bb82ea0387"),
+                            Name = "SQL"
+                        });
                 });
 
             modelBuilder.Entity("InfoNet.Domain.Entities.Skill", b =>

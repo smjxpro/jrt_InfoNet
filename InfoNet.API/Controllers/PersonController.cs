@@ -21,7 +21,7 @@ public class PersonController : BaseController
 
         try
         {
-            var persons= await _unitOfWork.Persons.GetAllAsync();
+            var persons = await _unitOfWork.Persons.GetAllAsync();
             response.Data = persons;
             return Ok(response);
         }
@@ -60,13 +60,37 @@ public class PersonController : BaseController
     }
 
     [HttpPost]
-    public async Task<ActionResult<ApiResponse<Person>>> Post([FromBody] Person person)
+    public async Task<ActionResult<ApiResponse<Person>>> Post([FromBody] PersonCreateDto personCreateDto)
     {
         var response = new ApiResponse<Person>();
 
+        var skills = new List<Skill>();
+
         try
         {
+            foreach (var skill in personCreateDto.Skills)
+            {
+                var skillDb = await _unitOfWork.Skills.GetByIdAsync(skill.Id);
+                if (skillDb == null)
+                {
+                    throw new Exception("Skill not found");
+                }
+
+                skills.Add(skillDb);
+            }
+
+            var person = new Person()
+            {
+                Name = personCreateDto.Name,
+                City = personCreateDto.City,
+                Country = personCreateDto.Country,
+                ResumeLink = personCreateDto.ResumeLink,
+                DateOfBirth = personCreateDto.DateOfBirth,
+                Skills = skills
+            };
             await _unitOfWork.Persons.AddAsync(person);
+
+
             await _unitOfWork.CommitAsync();
 
             response.Data = person;

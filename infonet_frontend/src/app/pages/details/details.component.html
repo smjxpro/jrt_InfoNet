@@ -1,0 +1,31 @@
+<div class="grid-container">
+  <h1 class="mat-h1">Details</h1>
+  <mat-grid-list cols="2" rowHeight="350px">
+
+    <ng-container *ngIf="person">
+      <mat-list>
+        <mat-list-item>
+          <mat-icon matListIcon>person</mat-icon>
+          <h4 matLine>Name: {{person.name}}</h4>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon matListIcon>pin_drop</mat-icon>
+          <h4 matLine>City: {{person.city}}</h4>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon matListIcon>map</mat-icon>
+          <h4 matLine>Country: {{person.country}}</h4>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon matListIcon>event</mat-icon>
+          <h4 matLine>Date of Birth: {{person.dateOfBirth|date}}</h4>
+        </mat-list-item>
+        <mat-list-item>
+          <mat-icon matListIcon>text_snippet</mat-icon>
+          <h4 matLine>Resume:  <a href=" {{person.resumeLink}}">Download</a> </h4>
+        </mat-list-item>
+      </mat-list>
+    </ng-container>
+
+  </mat-grid-list>
+</div>

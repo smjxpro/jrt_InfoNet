@@ -1,0 +1,45 @@
+<div class="main_div">
+
+  <div class="table_container">
+    <table>
+      <tr class="th_row">
+        <th>#</th>
+        <th>Name</th>
+        <th>Country</th>
+        <th>City</th>
+        <th>Date of Birth</th>
+        <th>Skills</th>
+        <th>Resume</th>
+        <th>Actions</th>
+      </tr>
+      <ng-container *ngFor="let person of data;let i = index">
+        <tr>
+          <td><span>{{i + 1}}</span></td>
+          <td>{{person.name}}</td>
+          <td>{{person.country}}</td>
+          <td>{{person.city}}</td>
+          <td>{{person.dateOfBirth|date}}</td>
+          <td>
+                        <span *ngFor="let skill of person.skills">
+                            {{skill.name}}
+                        </span>
+          </td>
+          <td>
+            <mat-icon (click)="downloadFile(person.resumeLink)" style="cursor: pointer;">cloud_download</mat-icon>
+          </td>
+
+          <td>
+            <mat-icon aria-hidden="false" aria-label="view" fontIcon="visibility"
+                      [routerLink]="['/details',person.id]"></mat-icon>
+            <mat-icon aria-hidden="false" aria-label="edit" fontIcon="edit"
+                      [routerLink]="['/edit',person.id]"></mat-icon>
+            <mat-icon aria-hidden="false" (click)="openDialog('0ms', '0ms', person.id!)" aria-label="delete"
+                      fontIcon="delete"></mat-icon>
+          </td>
+        </tr>
+      </ng-container>
+
+    </table>
+  </div>
+
+</div>

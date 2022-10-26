@@ -43,6 +43,31 @@ namespace InfoNet.Infrastructure.Migrations
                         principalColumn: "Id");
                 });
 
+            migrationBuilder.InsertData(
+                table: "Skills",
+                columns: new[] { "Id", "Name", "PersonId" },
+                values: new object[] { new Guid("4e2bb074-953f-4bc4-991e-2f2bfa2d77ff"), "C++", null });
+
+            migrationBuilder.InsertData(
+                table: "Skills",
+                columns: new[] { "Id", "Name", "PersonId" },
+                values: new object[] { new Guid("8599cc01-17c2-437b-a557-cfe142707ddd"), "PHP", null });
+
+            migrationBuilder.InsertData(
+                table: "Skills",
+                columns: new[] { "Id", "Name", "PersonId" },
+                values: new object[] { new Guid("c4e0ed66-6b79-4c3a-99bb-4bba72624d78"), "Java", null });
+
+            migrationBuilder.InsertData(
+                table: "Skills",
+                columns: new[] { "Id", "Name", "PersonId" },
+                values: new object[] { new Guid("cef4f3c3-b936-438b-8d25-9b24b7f4491b"), "C#", null });
+
+            migrationBuilder.InsertData(
+                table: "Skills",
+                columns: new[] { "Id", "Name", "PersonId" },
+                values: new object[] { new Guid("d7fe9808-5b69-40c3-a819-d5bb82ea0387"), "SQL", null });
+
             migrationBuilder.CreateIndex(
                 name: "IX_Skills_PersonId",
                 table: "Skills",
