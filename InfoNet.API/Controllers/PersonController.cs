@@ -140,6 +140,11 @@ public class PersonController : BaseController
                 skills.Add(skillDb);
             }
             
+            personToUpdate.Name = person.Name;
+            personToUpdate.City = person.City;
+            personToUpdate.Country = person.Country;
+            personToUpdate.ResumeLink = person.ResumeLink;
+            personToUpdate.DateOfBirth = person.DateOfBirth;
             personToUpdate.Skills = skills;
 
             await _unitOfWork.Persons.UpdateAsync(personToUpdate);
