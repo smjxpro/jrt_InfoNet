@@ -28,4 +28,7 @@ export class DetailsComponent implements OnInit {
     });
   }
 
+  download(link: string) {
+    window.open(window.location.origin + link);
+  }
 }

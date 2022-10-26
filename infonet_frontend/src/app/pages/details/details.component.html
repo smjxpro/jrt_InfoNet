@@ -16,13 +16,27 @@
           <mat-icon matListIcon>map</mat-icon>
           <h4 matLine>Country: {{person.country}}</h4>
         </mat-list-item>
+
+        <mat-list-item>
+          <mat-icon matListIcon>star</mat-icon>
+          <h4 matLine>Skills:
+            <span *ngFor="let skill of person.skills; let i = index">
+                            <span>{{skill.name}}</span>
+                            <span *ngIf="i < person.skills.length - 1">, </span>
+                        </span>
+          </h4>
+
+        </mat-list-item>
+
         <mat-list-item>
           <mat-icon matListIcon>event</mat-icon>
           <h4 matLine>Date of Birth: {{person.dateOfBirth|date}}</h4>
         </mat-list-item>
         <mat-list-item>
           <mat-icon matListIcon>text_snippet</mat-icon>
-          <h4 matLine>Resume:  <a href=" {{person.resumeLink}}">Download</a> </h4>
+          <h4 matLine>Resume: >
+            <mat-icon (click)="download(person.resumeLink)">download</mat-icon>
+          </h4>
         </mat-list-item>
       </mat-list>
     </ng-container>
