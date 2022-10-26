@@ -371,3 +371,5 @@ uploads/*
 
 # database
 *.sqlite
+*.sqlite-shm
+*.sqlite-wal

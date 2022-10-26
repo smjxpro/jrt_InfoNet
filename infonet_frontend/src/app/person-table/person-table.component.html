@@ -20,8 +20,9 @@
           <td>{{person.city}}</td>
           <td>{{person.dateOfBirth|date}}</td>
           <td>
-                        <span *ngFor="let skill of person.skills">
-                            {{skill.name}}
+                        <span *ngFor="let skill of person.skills; let i = index">
+                            <span>{{skill.name}}</span>
+                            <span *ngIf="i < person.skills.length - 1">, </span>
                         </span>
           </td>
           <td>

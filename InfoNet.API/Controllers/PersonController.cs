@@ -108,6 +108,9 @@ public class PersonController : BaseController
     public async Task<ActionResult<ApiResponse<Person>>> Put(Guid id, [FromBody] Person person)
     {
         var response = new ApiResponse<Person>();
+        
+        var skills = new List<Skill>();
+
 
         try
         {
@@ -125,7 +128,21 @@ public class PersonController : BaseController
                 response.Message = "Person id mismatch";
                 return BadRequest(response);
             }
+            
+            foreach (var skill in person.Skills)
+            {
+                var skillDb = await _unitOfWork.Skills.GetByIdAsync(skill.Id);
+                if (skillDb == null)
+                {
+                    throw new Exception("Skill not found");
+                }
 
+                skills.Add(skillDb);
+            }
+            
+            personToUpdate.Skills = skills;
+
+            await _unitOfWork.Persons.UpdateAsync(personToUpdate);
 
             await _unitOfWork.CommitAsync();
 
